@@ -1,6 +1,5 @@
 # Urban-Palette
-
-# ブランチの命名規則
+### ブランチの命名規則
 - フロントエンド
   - app/feature/{issues番号}
 - バックエンド
