@@ -28,9 +28,10 @@ public class PlayerFollowCamera : MonoBehaviour {
         // player位置から距離distanceだけ手前に引いた位置を設定します
         transform.position = player.position - transform.rotation * Vector3.forward * distance; 
         // 水平回転の更新
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0)){
             hRotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * turnSpeed, 0);
-            //vRotation *= Quaternion.Euler(0, Input.GetAxis("Mouse Y") * turnSpeed, 0);
+            vRotation *= Quaternion.Euler(Input.GetAxis("Mouse Y") * turnSpeed, 0, 0);
+        }
 
         // カメラの回転(transform.rotation)の更新
         // 方法1 : 垂直回転してから水平回転する合成回転とします
