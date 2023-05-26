@@ -1,6 +1,22 @@
 # Urban-Palette
+### 開発の流れ
+- [project](https://github.com/orgs/shoto-kai/projects/2/views/1)からissueを作成
+- ブランチをきる(ex ```git switch -c api/feature/001```)
+- 開発
+- commitを出す。 この時コミットメッセージの先頭にissue番号を紐付ける(ex ```git commit -m "#1 Laravelの環境構築"```)
+- プルリクを出す(フロントはフロント、バックはバックでそれぞれの相方がマージするのがいいかな？)
+- issueとブランチを閉じる
 
-## Unity × Plateu の使い方
+### ブランチの命名規則
+- フロントエンド
+
+  app/feature/{issues番号}
+- バックエンド
+
+  api/feature/{issues番号}
+
+
+### Unity × Plateu の使い方
 1. Unity Hubをインストールします。
 　　https://unity.com/ja/download
 2. UnityプロジェクトのZipファイルがある場合、それを読み込んでしまうのが楽かもしれません。
@@ -26,6 +42,3 @@ https://note.com/oshimu/n/n2907ead541d6
 9. Unity Projectの重力の設定を変更し、重力を0にします。
 * 参考サイト： https://qiita.com/t_Kaku_7/items/fdf5bab18b65f6f9dcb4
 10. この状態で、画面中央上部の ▶︎ ボタンを押してシーンを再生すれば動かせると思います。zipファイルの方は多分動くと思いますが、自分で組み上げる方はテストしてないので何かあればT08Y02の方に相談ください。
-
-
-
