@@ -17,6 +17,6 @@ docker run --rm \
 ```
 - 以下のコマンドでデータベースを作成
 ```
-sail artisan migrate
+./vendor/bin/sail artisan migrate
 ```
 - localhostにアクセスしてlaravelを起動　
