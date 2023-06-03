@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('instagrams', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('postid')->unique();
             $table->text('image_url');
-            $table->string('text');
+            $table->text('text');
             $table->timestamps();
             $table->softDeletes();
         });
