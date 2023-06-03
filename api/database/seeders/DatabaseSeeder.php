@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(PostSeeder::class);
         $this->call(DicSeeder::class);
         $this->call(InstaSeeder::class);
-        $this->call(UnitydicSeeder::class);
+        // $this->call(UnitydicSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 
