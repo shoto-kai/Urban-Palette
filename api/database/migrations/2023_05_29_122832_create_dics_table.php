@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('dics', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->double('latitude',8,6);
-            $table->double('longitude',9,6);
+            $table->string('shop_name');
+            $table->string('unity_name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

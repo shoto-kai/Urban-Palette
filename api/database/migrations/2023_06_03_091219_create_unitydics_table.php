@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('instagrams', function (Blueprint $table) {
+        Schema::create('unitydics', function (Blueprint $table) {
             $table->id();
-            $table->string('image_url');
-            $table->string('text');
+            $table->string('unity_name');
+            $table->double('latitude',8,6);
+            $table->double('longitude',9,6);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('insta');
+        Schema::dropIfExists('unitydics');
     }
 };
