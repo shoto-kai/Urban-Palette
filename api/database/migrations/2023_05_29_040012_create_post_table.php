@@ -17,6 +17,9 @@ return new class extends Migration
             $table->double('latitude',8,6);
             $table->double('longitude',9,6);
             $table->timestamps();
+            $table->softDeletes();
+
+        
         });
     }
 

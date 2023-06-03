@@ -13,19 +13,18 @@ class InstaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('dics')->insert([
+        DB::table('instagrams')->insert([
                
             'image_url'=>'xyz',
             'text'=>'松濤カフェおいしいよ',
-            'longitude'=>2.234
+           
          ]);
          
-         DB::table('dics')->insert([
+         DB::table('instagrams')->insert([
            
       
-            'name'=>'ドトール',
-            'latitude'=>3.345,
-            'longitude'=>4.456
+            'image_url'=>'opq',
+            'text'=>'ドトールにきたよ',
          ]);
     }
 }
