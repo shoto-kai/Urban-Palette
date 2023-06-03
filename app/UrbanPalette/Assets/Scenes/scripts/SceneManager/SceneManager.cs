@@ -23,6 +23,7 @@ public class SceneManager : MonoBehaviour
                 int grandGrandChildCount = BuildingObjects[i].GetChild(j).childCount;
                 for (int k=0; k < grandGrandChildCount; k++){
                     var CurrentObject = BuildingObjects[i].GetChild(j).GetChild(k).gameObject;
+                    CurrentObject.AddComponent<Rigidbody>();
                     CurrentObject.tag = Colorlist[k % 3];
                     CurrentObject.AddComponent<Test>();
 

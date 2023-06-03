@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        //Debug.Log(name);
+        //Debug.Log(this.transform.localPosition);
         // Material mat = this.GetComponent<Renderer>().material;
         // マテリアルの色設定に赤色を設定
         // if (this.tag == "red"){
