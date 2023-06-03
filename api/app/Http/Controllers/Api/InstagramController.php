@@ -8,22 +8,69 @@ use App\Models\Instagram;
 
 class InstagramController extends Controller
 {
-    public function insta(){
+    public function insta()
+    {
 
-        $Instagram = new Instagram;
-        $image ='abc';
-        $text ='efg';
-        $Instagram->image_url = $image;
-        $Instagram->text = $text;
-        $Instagram->save();
+        $graphapi_url = 'https://graph.facebook.com/v17.0/';
+        $access_token = config("apikey.hotpepper_access_token");
+        $instagram_business_account_id = '17841407013891828';
+        $hashtag_id_shibuya = '17843876368030861';
 
-        // $instas = インスタからシャープ渋谷を取得;
-        // foreach($instas as $insta){
-        //    $image_url = $insta['image'];
-        //    $text = $insta['text'];
-        //    $post = array('image'=>$image,'text'=>$text);
-        //    $Insta->fill($post)->save();  
+
+        $options = [
+            'http' => [
+                'method' => 'GET',
+                'header' => 'Content-Type: application/json', // 必要に応じてヘッダーを追加します
+            ],
+        ];
+        $context = stream_context_create($options);
+
+        $hashtag_id = $hashtag_id_shibuya;
+        $condition = 'recent_media'; // recent_media or top_media
+
+        // ハッシュタグ付きの最近のメディアを取得
+        $get_hashtag_recent_media_url = $graphapi_url . $hashtag_id . '/' . $condition . '?user_id=' . $instagram_business_account_id . '&fields=id,media_url,caption&access_token=' . $access_token;
+        $response = file_get_contents($get_hashtag_recent_media_url, true, $context);
+
+        $response_array = json_decode($response, true);
+
+        $x = 0;
+        while ($x <= 0) {
+            foreach ($response_array["data"] as $item) {
+                
+                if (isset($item["media_url"])) {
+                    $Instagram = new Instagram;
+
+                    $postid = $item["id"];
+                    $isId = $Instagram->where("postid","=",$postid)->first();
+                    
+                    if (!$isId) {
+                        $image_url = $item["media_url"];
+                        $text = str_replace(["\r\n", "\r", "\n"], '', $item["caption"]);
+    
+                        $Instagram->postid = $postid;
+                        $Instagram->image_url = $image_url;
+                        $Instagram->text = $text;
+    
+                        $Instagram->save();
+                    }
+                    
+                    // echo "id: " . $item["id"] . PHP_EOL;
+                    // echo "media_url: " . $item["media_url"] . PHP_EOL;
+                    // echo "caption: " . str_replace(["\r\n", "\r", "\n"], '', $item["caption"]) . PHP_EOL;
+                }
+            }
+            if (isset($response_array["paging"]["next"])) {
+                $new_url = $response_array["paging"]["next"];
+                // echo $new_url;
+            } else {
+                $x += 100;
+            }
+
+            $response = file_get_contents($new_url, true, $context);
+            $response_array = json_decode($response, true);
+            echo $x;
+            $x++;
         }
-       
-       }
-
+    }
+}
