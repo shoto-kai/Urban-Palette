@@ -11,7 +11,6 @@ class Instagram extends Model
     use HasFactory;
     use SoftDeletes;
     
-    
     protected $fillable = [
     'image_url',
     'text',

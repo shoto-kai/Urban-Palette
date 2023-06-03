@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Unitydic extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     protected $fillable = [
-    'image_url',
-    'unity_name'
-    ];
+        'unity_name',
+        'latitude',
+        'longitude'
+        ];
 }
-    

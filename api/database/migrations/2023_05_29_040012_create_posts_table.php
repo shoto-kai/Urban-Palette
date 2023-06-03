@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('image_url');
-            $table->double('latitude',8,6);
-            $table->double('longitude',9,6);
+            $table->text('image_url');
+            $table->string('unity_name');
             $table->timestamps();
             $table->softDeletes();
 

@@ -11,11 +11,9 @@ class Dic extends Model
     use HasFactory;
     use SoftDeletes;
     
-    
     protected $fillable = [
-    'name',
-    'latitude',
-    'longitude'
+    'unity_name',
+    'shop_name'
     
     ];
 }

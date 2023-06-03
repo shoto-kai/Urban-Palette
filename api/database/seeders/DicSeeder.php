@@ -14,18 +14,25 @@ class DicSeeder extends Seeder
     public function run(): void
     {
         DB::table('dics')->insert([
-               
-            'name'=>'松濤カフェ',
-            'latitude'=>1.123,
-            'longitude'=>2.234
-         ]);
-         
-         DB::table('dics')->insert([
-           
-      
-            'name'=>'ドトール',
-            'latitude'=>3.345,
-            'longitude'=>4.456
-         ]);
+
+            'unity_name' => 'abc1234',
+            'shop_name' => 'タコベル'
+        ]);
+
+        DB::table('dics')->insert([
+            'unity_name' => 'def5678',
+            'shop_name' => '松濤カフェ'
+        ]);
+
+        DB::table('dics')->insert([
+
+            'unity_name' => 'ghi1234',
+            'shop_name' => 'ドトール'
+        ]);
+
+        DB::table('dics')->insert([
+            'unity_name' => 'jkl5678',
+            'shop_name' => '松屋'
+        ]);
     }
 }
