@@ -22,11 +22,17 @@ class DicController extends Controller
             $json = json_decode(json_encode(simplexml_load_string($result)), true);
             if (isset($json['shop'])) {
                 $results = $json['shop'];
-                echo 'name: ' . $results[0]['name'] . PHP_EOL;
-                $dic = new Dic;
-                $dic->unity_name = $unitydic->unity_name;
-                $dic->shop_name = $results[0]['name'];
-                $dic->save();
+                // echo 'name: ' . $results[0]['name'] . PHP_EOL;
+                $string = $results[0]['name'];
+                $words = explode(" ", $string);
+
+                foreach ($words as $word) {
+                    $dic = new Dic;
+                    $dic->unity_name = $unitydic->unity_name;
+                    $dic->shop_name = $word;
+                    $dic->save();
+                    echo $word . PHP_EOL;
+                }
             }
         }
     }
