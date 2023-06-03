@@ -25,8 +25,8 @@ class Unitydic extends Command
      */
     public function handle()
     {
-        $MakeDictionary_controller = app()->make('App\Http\Controllers\Api\UnitydicController');
-        $MakeDictionary_controller->Unitydic();
+        $Unitydic_controller = app()->make('App\Http\Controllers\Api\UnitydicController');
+        $Unitydic_controller->Unitydic();
         return Command::SUCCESS;
     }
 }

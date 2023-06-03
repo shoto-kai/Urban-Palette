@@ -12,7 +12,7 @@ class InstagramController extends Controller
     {
 
         $graphapi_url = 'https://graph.facebook.com/v17.0/';
-        $access_token = config("apikey.hotpepper_access_token");
+        $access_token = config("apikey.instagram_access_token");
         $instagram_business_account_id = '17841407013891828';
         $hashtag_id_shibuya = '17843876368030861';
 
