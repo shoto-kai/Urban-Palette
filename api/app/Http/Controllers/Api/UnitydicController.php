@@ -9,22 +9,23 @@ class UnitydicController extends Controller
 {
     public function unitydic()
     {
-        // // $buildings = 辞書を読み込む？;
-        // foreach( $buildings as  $building){
-        //     $latitude = $building['latitude'];
-        //     $longitude = $building['longitude'];
-        //     $name = $building['name'];
-        //     $location = array('latitude'=>$latitude,'longitude'=>$longitude,'name' =>$name);
-        //     $Dics->fill($location)->save();
+        $filePath = storage_path('app/public/positions.csv');
+        $file = fopen($filePath, 'r');
 
-        $Unitydic = new Unitydic;
+        if ($file) {
+            while (($data = fgetcsv($file)) !== false) {
+                // echo "unity_name:" . $data[1] . "latitude:" . $data[6] . "longitude:" . $data[7] . PHP_EOL;
+                
+                $Unitydic = new Unitydic;
+                $Unitydic->unity_name = $data[1];
+                $Unitydic->latitude = floatval($data[6]);
+                $Unitydic->longitude = floatval($data[7]);
+                $Unitydic->save();
+            }
 
-        $unity_name = 'abc21212';
-        $latitude = 35.123123;
-        $longitude = 136.234234;
-        $Unitydic->unity_name = $unity_name;
-        $Unitydic->latitude = $latitude;
-        $Unitydic->longitude = $longitude;
-        $Unitydic->save();
+            fclose($file);
+        } else {
+            // ファイルのオープンに失敗した場合の処理
+        }
     }
 }
