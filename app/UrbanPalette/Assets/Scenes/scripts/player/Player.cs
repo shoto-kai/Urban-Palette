@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
     void Update () {
         // WASD入力から、XZ平面(水平な地面)を移動する方向(velocity)を得ます
         velocity = Vector3.zero;
-        moveSpeed = 5.0f;
+        moveSpeed = 0.5f;
         if(Input.GetKey(KeyCode.W))
             velocity.z += 1;
         if(Input.GetKey(KeyCode.A))
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
         if(Input.GetKey(KeyCode.LeftShift))
             velocity.y -= 1;
         if(Input.GetKey(KeyCode.E))
-            moveSpeed = 50.0f;
+            moveSpeed = 3.0f;
 
         // 速度ベクトルの長さを1秒でmoveSpeedだけ進むように調整します
         velocity = velocity.normalized * moveSpeed * Time.deltaTime;
