@@ -17,10 +17,13 @@ class PostsController extends Controller
         {
             $shop_name = $dic->shop_name;
             $unity_name = $dic->unity_name;
-            $image_urls = Instagram::where('text',"like","%$shop_name%")->get(['image_url']);
-            foreach ( $image_urls as $image_url) {
+            $tweets = Instagram::where('text',"like","%$shop_name%")->get();
+ 
+
+            foreach ( $tweets as $tweet) {
+
                 $post = new Post;
-                $post->image_url = $image_urls;
+                $post->image_url = $tweet -> image_url;
                 $post->unity_name = $unity_name;
                 $post->save();
             }

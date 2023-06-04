@@ -51,9 +51,9 @@ class InstagramController extends Controller
                         if (isset($item["caption"])) {
                             $text = str_replace(["\r\n", "\r", "\n"], '', $item["caption"]);
                         }
-    
+                        // echo $image_url . PHP_EOL;
                         $Instagram->postid = $postid;
-                        $Instagram->image_url = $image_url;
+                        $Instagram->image_url = str($image_url);
                         $Instagram->text = $text;
     
                         $Instagram->save();
