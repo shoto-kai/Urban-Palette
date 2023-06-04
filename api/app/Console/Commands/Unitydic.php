@@ -4,29 +4,29 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class MakeDictionary extends Command
+class Unitydic extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:make-dictionary';
+    protected $signature = 'app:unitydic';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '地名辞書を作成する';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $MakeDictionary_controller = app()->make('App\Http\Controllers\Api\MakeDictionaryController');
-        $MakeDictionary_controller->dictionary();
+        $Unitydic_controller = app()->make('App\Http\Controllers\Api\UnitydicController');
+        $Unitydic_controller->Unitydic();
         return Command::SUCCESS;
     }
 }
