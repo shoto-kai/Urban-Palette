@@ -36,4 +36,9 @@ class DicController extends Controller
             }
         }
     }
+    public function dicdelete(){
+        $dic = new Dic;
+        $dic->where('shop_name',"like",'%渋谷%')->delete();
+
+    }
 }
