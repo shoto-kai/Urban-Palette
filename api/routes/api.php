@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/return', [ReturnController::class, 'return_to_unity']);
+Route::get('/return/{building_id}', [ReturnController::class, 'return_to_unity']);
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

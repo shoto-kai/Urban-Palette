@@ -10,15 +10,23 @@ use App\Models\Post;
 
 class ReturnController extends Controller
 {
-    public function return_to_unity(){
+    public function return_to_unity($building_id){
 
+        //$unity_name = $building_id;
 
-
-        $unity_name = "1.123";
+        $unity_name = "bldg_b585c997-a66a-4534-b2c0-4ad931ad4f77";
         
-        $result = Post::where('unity_name','=',$unity_name)->get(['image_url']);
+        //$results = array(Post::where('unity_name','=',$unity_name)->get(['image_url']));
+        $result = Post::where('unity_name','=',$unity_name)->first();
+
+        return $result->image_url;
        
-        echo $result;
+        // $result = array_rand($results,1);
+
+        // return $result;
+
+        // return json_encode($results);
+       
 
       
         }
