@@ -12,23 +12,36 @@ use App\Models\Instagram;
 class PostsController extends Controller
 {
     public function post(){
-
-        $insta = new Instagram;
-        // $dics = new dic;
-        $post = new Post;
-        $dics = ['タコベル','ドトール','松濤カフェ'];
+        $dics = Dic::all();
         foreach ( $dics as $dic )
         {
+            $shop_name = $dic->shop_name;
+            $unity_name = $dic->unity_name;
+            $image_urls = Instagram::where('text',"like","%$shop_name%")->get(['image_url']);
+            foreach ( $image_urls as $image_url) {
+                $post = new Post;
+                $post->image_url = $image_urls;
+                $post->unity_name = $unity_name;
+                $post->save();
+            }
+        }
+    }
+}
+
+
+
+
+
             // $result = strpos($insta,$dic);
                 // $result =Instagram::where('text','=',$dic)->get(['image_url']);
-                $result = "SELECT * FROM Instagram WHERE `text` LIKE '%$dic%'";
-                if($result !== false){
-                    $post->image_url = $insta ->image_url;
-                    // $post->unity_name = $dic -> unity_name;
-                    $post->save();
-                }else{
-                    //何もしない
-                }
+                // $result = "SELECT * FROM Instagram WHERE `text` LIKE '%$dic%'";
+                // if($result !== false){
+                //     $post->image_url = $insta ->image_url;
+                //     // $post->unity_name = $dic -> unity_name;
+                //     $post->save();
+                // }else{
+                //     //何もしない
+                // }
 
         // $Post = new Post;
 
@@ -55,6 +68,4 @@ class PostsController extends Controller
         //     $Post->fill($post)->save();
         
             // }
-        }
-    }
-}
+       

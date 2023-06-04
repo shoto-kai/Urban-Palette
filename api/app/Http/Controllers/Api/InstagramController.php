@@ -15,6 +15,7 @@ class InstagramController extends Controller
         $access_token = config("apikey.instagram_access_token");
         $instagram_business_account_id = '17841407013891828';
         $hashtag_id_shibuya = '17843876368030861';
+        $hashtag_id_shibuya_gurume = '17842207411070816';
 
 
         $options = [
@@ -25,7 +26,7 @@ class InstagramController extends Controller
         ];
         $context = stream_context_create($options);
 
-        $hashtag_id = $hashtag_id_shibuya;
+        $hashtag_id = $hashtag_id_shibuya_gurume;
         $condition = 'recent_media'; // recent_media or top_media
 
         // ハッシュタグ付きの最近のメディアを取得
@@ -35,7 +36,7 @@ class InstagramController extends Controller
         $response_array = json_decode($response, true);
 
         $x = 0;
-        while ($x <= 0) {
+        while ($x <= 100) {
             foreach ($response_array["data"] as $item) {
                 
                 if (isset($item["media_url"])) {
@@ -46,7 +47,10 @@ class InstagramController extends Controller
                     
                     if (!$isId) {
                         $image_url = $item["media_url"];
-                        $text = str_replace(["\r\n", "\r", "\n"], '', $item["caption"]);
+                        $text = null;
+                        if (isset($item["caption"])) {
+                            $text = str_replace(["\r\n", "\r", "\n"], '', $item["caption"]);
+                        }
     
                         $Instagram->postid = $postid;
                         $Instagram->image_url = $image_url;
