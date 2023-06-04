@@ -10,40 +10,16 @@ use App\Models\Post;
 
 class ReturnController extends Controller
 {
-    public function return(Request $request){
+    public function return_to_unity(){
 
 
-        $posts = new Post;
 
-        $latitude = 1.123;
-
-        $post = Post::where('latitude','=',$latitude )->get();
-
-        echo $post;
-        // $posts = new Post;
-
-        // $latitude = 1.123;
-
-        // $Post = Post::where('latitude','=',$latitude )->get();
-
-        // $post= $posts->first();
-        // $image_url = $post->image_url;
-
-        // return ("abc");
-        //return gettype($image_url);
-        // return response()->json([
-        //     'message' => "abc",
-        // ]);
+        $unity_name = "1.123";
+        
+        $result = Post::where('unity_name','=',$unity_name)->get(['image_url']);
        
+        echo $result;
 
-
-            // $locations = unityから位置情報を取得;
-            // foreach ($locations as $location){
-            //     $posts = postテーブルのデータを格納;
-            //     $result = where('location',$location)->get();
-            //     ↑unity（？）に投稿;
-                }
+      
+        }
 }
-
-       
-
